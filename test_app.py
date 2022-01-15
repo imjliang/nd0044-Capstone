@@ -67,6 +67,14 @@ class CapstoneTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(type(data['movies']) == list)
 
+    def test_get_movie_unauthorized_401(self):
+        res = self.client().get('/movies')
+        data = json.loads(res.data)
+
+
+        self.assertEqual(res.status_code, 401)
+        self.assertFalse(data['success'])
+
     def test_get_actors_success(self):
         header_obj = {
             "Authorization": self.auth_headers["casting_assistant"]
@@ -78,10 +86,9 @@ class CapstoneTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(type(data['actors']) == list)
 
-    def test_get_movie_unauthorized_401(self):
-        res = self.client().get('/movies')
+    def test_get_actor_unauthorized_401(self):
+        res = self.client().get('/actors')
         data = json.loads(res.data)
-
 
         self.assertEqual(res.status_code, 401)
         self.assertFalse(data['success'])
@@ -145,14 +152,6 @@ class CapstoneTestCase(unittest.TestCase):
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 422)
         self.assertEqual(data['success'], False)
-
-    def test_get_actor_unauthorized_401(self):
-        res = self.client().get('/actors')
-        data = json.loads(res.data)
-
-
-        self.assertEqual(res.status_code, 401)
-        self.assertFalse(data['success'])
 
 
     def test_create_movies_success(self):

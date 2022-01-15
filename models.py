@@ -65,7 +65,7 @@ class Movie(db.Model):
             'id': self.id,
             'title': self.title,
             'release_date': self.release_date,
-            'actors': list(map(lambda actor: actor.format(), self.actors))
+            'actors': [actor.format() for actor in self.actors]
         }
 
 #----------------------------------------------------------------------------#

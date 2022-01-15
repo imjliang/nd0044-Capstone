@@ -40,7 +40,7 @@ def create_app(test_config=None):
   def retrieve_movies(payload):
       try:
           movies = Movie.query.all()
-          movies = list(map(lambda movie: movie.format(), movies))
+          movies = [movie.format() for movie in movies]
           return jsonify({
               "success": True,
               "movies": movies
@@ -53,7 +53,7 @@ def create_app(test_config=None):
   def retrieve_actors(payload):
       try:
           actors = Actor.query.all()
-          actors = list(map(lambda actor: actor.format(), actors))
+          actors = [actor.format() for actor in actors]
           return jsonify({
               "success": True,
               "actors": actors

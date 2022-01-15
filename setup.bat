@@ -6,6 +6,5 @@ set API_AUDIENCE=casting
 
 set DATABASE_URL=postgresql://postgres:0613@localhost:5432/fsndcapstone
 set FLASK_APP=app.py
-set FLASK_DEBUG=True
 set FLASK_ENVIRONMENT=debug
 echo "setup app completed!"

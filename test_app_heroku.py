@@ -62,6 +62,13 @@ class CapstoneTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(type(data['actors']) == list)
 
+    def test_get_actor_unauthorized_401(self):
+        res = requests.get(self.heroku_url + '/actors')
+        data = res.json()
+
+        self.assertEqual(res.status_code, 401)
+        self.assertFalse(data['success'])
+
     def test_get_movie_unauthorized_401(self):
         res = requests.get(self.heroku_url + '/movies')
         data = res.json()
@@ -129,14 +136,6 @@ class CapstoneTestCase(unittest.TestCase):
         data = res.json()
         self.assertEqual(res.status_code, 422)
         self.assertEqual(data['success'], False)
-
-    def test_get_actor_unauthorized_401(self):
-        res = requests.get(self.heroku_url + '/actors')
-        data = res.json()
-
-
-        self.assertEqual(res.status_code, 401)
-        self.assertFalse(data['success'])
 
 
     def test_create_movies_success(self):
