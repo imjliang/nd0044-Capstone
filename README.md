@@ -105,7 +105,7 @@ The application is run on `http://127.0.0.1:5000/` by default.
 
 To test the application locally,  you can use `run_test_local.bat`script.
 
-To test the hosted app on heroku, run the script `run_test_heroku`instead.
+To test the hosted app on heroku, run the script `run_test_heroku.bat`instead.
 
 
 
